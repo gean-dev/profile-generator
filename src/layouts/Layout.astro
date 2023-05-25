@@ -19,9 +19,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="flex min-h-screen flex-col max-w-md mx-auto py-4">
-      <slot />
-    </div>
+    <slot />
   </body>
 </html>
 <style is:global>
