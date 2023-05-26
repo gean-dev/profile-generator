@@ -22,8 +22,6 @@ export const Modal = (props: ModalProps) => {
       >
         <div class="min-h-screen px-4 flex items-center justify-center">
           <TransitionChild
-            // enter="ease-out"
-            // leave="ease-in"
             enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -39,8 +37,6 @@ export const Modal = (props: ModalProps) => {
             &#8203;
           </span>
           <TransitionChild
-            // enter="ease-out"
-            // leave="ease-in"
             enter="ease-out duration-300"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
@@ -51,7 +47,7 @@ export const Modal = (props: ModalProps) => {
             <DialogPanel class="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <DialogTitle
                 as="h3"
-                class="text-lg font-medium leading-6 text-gray-900"
+                class="text-xl font-semibold leading-6 text-gray-900"
               >
                 Crop your picture!
               </DialogTitle>
