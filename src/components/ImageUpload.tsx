@@ -24,7 +24,7 @@ export const ImageUpload = () => {
           <img ref={image!} class="bg-gray-50 object-cover w-full h-[100%]" />
         </div>
       </div>
-      <label class="inline-flex justify-center rounded-xl border border-transparent bg-violet-600 px-4 py-2 text-sm font-bold tracking-wide text-white hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-50 focus-visible:ring-offset-2">
+      <label class="no-print inline-flex justify-center rounded-xl border border-transparent bg-violet-600 px-4 py-2 text-sm font-bold tracking-wide text-white hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-50 focus-visible:ring-offset-2">
         Upload Picture
         <input
           id="file"
