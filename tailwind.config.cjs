@@ -15,6 +15,9 @@ module.exports = {
           ...defaultTheme.fontFamily.sans,
         ],
       },
+      animation: {
+        "fade-in": "fadeIn 2s ease-in",
+      },
     },
   },
   plugins: [],

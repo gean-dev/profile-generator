@@ -1,6 +1,5 @@
 ---
 import { Image } from "@astrojs/image/components";
-import { BackgroundEffect } from "./BackgroundEffect";
 import { ModalButton } from "./Modal";
 
 export interface Props {
@@ -20,7 +19,15 @@ export interface Props {
     format="avif"
     fit="cover"
   />
-  <BackgroundEffect client:load/>
+  <Image
+    alt="background"
+    src="/profile-card/effect.png"
+    class="object-cover left-0 top-0 right-0 bottom-0 absolute -z-10 h-[800px] animate-fade-in"
+    width={900}
+    height={1600}
+    format="webp"
+    fit="cover"
+  />
   <div class="bg-gray-50 rounded-2xl p-4">
     <h1 class="mb-4 font-extrabold text-2xl">
       <a
