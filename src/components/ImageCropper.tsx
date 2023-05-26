@@ -1,12 +1,9 @@
 import { Motion } from "@motionone/solid";
-import { DragGesture, Gesture } from "@use-gesture/vanilla";
-import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
+import { Gesture } from "@use-gesture/vanilla";
+import { createSignal, onCleanup, onMount } from "solid-js";
 
 export const ImageCropper = () => {
   const [transform, setTransform] = createSignal({ x: 0, y: 0, s: 1 });
-  createEffect(() => {
-    console.log(transform());
-  });
   let img: HTMLImageElement;
   let parent: HTMLDivElement;
   onMount(() => {
