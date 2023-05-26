@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import { ModalButton } from "./Modal";
+import { ImageUpload } from "./ImageUpload";
 
 export interface Props {
   title?: string;
@@ -8,7 +9,7 @@ export interface Props {
 ---
 
 <div
-  class="max-xs:flex-1 h-[800px] xs:rounded-2xl bg-transparent w-full p-6 relative overflow-hidden xs:pl-16 xs:pt-12 flex flex-col gap-4"
+  class="max-xs:flex-1 h-[800px] xs:rounded-2xl bg-transparent w-full p-6 relative overflow-hidden flex flex-col gap-4"
 >
   <Image
     alt="background"
@@ -20,7 +21,7 @@ export interface Props {
     fit="cover"
   />
   <Image
-    alt="background"
+    alt="background effect"
     src="/profile-card/effect.png"
     class="object-cover left-0 top-0 right-0 bottom-0 absolute -z-10 h-[800px] animate-fade-in"
     width={900}
@@ -28,8 +29,8 @@ export interface Props {
     format="webp"
     fit="cover"
   />
-  <div class="bg-gray-50 rounded-2xl p-4">
-    <h1 class="mb-4 font-extrabold text-2xl">
+  <div class="p-4 xs:pl-10 flex flex-col gap-4 w-80 mx-auto mt-40">
+    <h1 class="font-extrabold text-2xl">
       <a
         target="_blank"
         rel="noopener"
@@ -37,6 +38,9 @@ export interface Props {
         href="https://www.instagram.com/accclub.chula/">@accclub.chula</a
       >
     </h1>
-    <ModalButton client:load />
+    <!-- <div class="flex justify-between">
+      <ModalButton client:load />
+    </div> -->
+    <ImageUpload client:load />
   </div>
 </div>

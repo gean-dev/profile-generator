@@ -73,18 +73,16 @@ export const ModalButton = () => {
   const [isOpen, setOpen] = createSignal(false);
   return (
     <>
-      <div class="w-full flex justify-end">
-        <Modal isOpen={isOpen()} onClose={() => setOpen(false)}>
-          <ImageCropper />
-        </Modal>
-        <button
-          type="button"
-          class="inline-flex justify-center rounded-xl border border-transparent bg-violet-600 px-4 py-2 text-sm font-bold tracking-wide text-white hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-50 focus-visible:ring-offset-2"
-          onClick={() => setOpen(true)}
-        >
-          Open
-        </button>
-      </div>
+      <button
+        type="button"
+        class="inline-flex justify-center rounded-xl border border-transparent bg-violet-100 px-4 py-2 text-sm font-bold tracking-wide text-violet-900 hover:bg-violet-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
+        onClick={() => setOpen(true)}
+      >
+        Open
+      </button>
+      <Modal isOpen={isOpen()} onClose={() => setOpen(false)}>
+        <ImageCropper />
+      </Modal>
     </>
   );
 };

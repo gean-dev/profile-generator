@@ -61,7 +61,7 @@ export const ImageCropper = () => {
     >
       <Motion.img
         ref={img!}
-        src="/profile-card/card6-01.png"
+        src="/profile-card/card6.png"
         animate={{ x: transform().x, y: transform().y, scale: transform().s }}
         draggable={false}
         transition={{ easing: "ease-in-out", duration: 0 }}
