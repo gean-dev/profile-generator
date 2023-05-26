@@ -25,6 +25,9 @@ dependencies:
   sharp:
     specifier: ^0.32.1
     version: 0.32.1
+  solid-headless:
+    specifier: ^0.13.1
+    version: 0.13.1(solid-js@1.7.5)
   solid-js:
     specifier: ^1.4.3
     version: 1.7.5
@@ -3355,11 +3358,30 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /solid-headless@0.13.1(solid-js@1.7.5):
+    resolution: {integrity: sha512-FZJai49YmdBu6oEo8aJGPMQ1Qn8xiW0cnD6vNFDIQWMKJdXEUtDEwz0hTR9aZ7Epq3IkrZs+98E0vNiv1+pZpA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      solid-js: ^1.2
+    dependencies:
+      solid-js: 1.7.5
+      solid-use: 0.6.2(solid-js@1.7.5)
+    dev: false
+
   /solid-js@1.7.5:
     resolution: {integrity: sha512-GfJ8na1e9FG1oAF5xC24BM+ATLym0sfH+ZblkbBFpueYdq3fWAoA5Ve+jGeIeLI7jmMGfa0rUaKruszNm2sH8w==}
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
+    dev: false
+
+  /solid-use@0.6.2(solid-js@1.7.5):
+    resolution: {integrity: sha512-0ShJ5s+4PIN0pJB/BtsQucsZB+xnUeeTGaxErQDu6USn5jygZWXicAtOEvFbI8gv40xE751uY1Tz7Aib9lxL/Q==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      solid-js: ^1.5
+    dependencies:
+      solid-js: 1.7.5
     dev: false
 
   /source-map-js@1.0.2:

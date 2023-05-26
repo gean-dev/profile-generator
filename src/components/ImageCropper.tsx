@@ -1,54 +1,60 @@
 import { Motion } from "@motionone/solid";
-import { Gesture } from "@use-gesture/vanilla";
-import { createSignal, onCleanup, onMount } from "solid-js";
+import { DragGesture, Gesture } from "@use-gesture/vanilla";
+import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 
 export const ImageCropper = () => {
   const [transform, setTransform] = createSignal({ x: 0, y: 0, s: 1 });
-
+  createEffect(() => {
+    console.log(transform());
+  });
   let img: HTMLImageElement;
   let parent: HTMLDivElement;
   onMount(() => {
-    const gesture = new Gesture(
-      parent,
-      {
-        onDrag: ({ pinching, cancel, offset: [x, y], ...rest }) => {
-          if (pinching) return cancel();
-          setTransform((tran) => ({ ...tran, x, y }));
-        },
-        onPinch: ({
-          origin: [ox, oy],
-          first,
-          movement: [ms],
-          offset: [s, a],
-          memo,
-        }) => {
-          if (first) {
-            const { width, height, x, y } = img.getBoundingClientRect();
-            const tx = ox - (x + width / 2);
-            const ty = oy - (y + height / 2);
-            memo = [transform().x, transform().y, tx, ty];
-          }
-          const x = memo[0] - (ms - 1) * memo[2];
-          const y = memo[1] - (ms - 1) * memo[3];
-          setTransform({ s, x, y });
-          return memo;
-        },
-      },
-      {
-        drag: {
-          from: () => [transform().x, transform().y],
-          bounds: {
-            left: -img.width / 2,
-            right: img.width / 2,
-            top: -img.height / 2,
-            bottom: img.height / 2,
+    let gesture: Gesture | undefined;
+    function initGesture() {
+      gesture = new Gesture(
+        parent,
+        {
+          onDrag: ({ pinching, cancel, offset: [x, y] }) => {
+            if (pinching) return cancel();
+            setTransform((tran) => ({ ...tran, x, y }));
+          },
+          onPinch: ({
+            origin: [ox, oy],
+            first,
+            movement: [ms],
+            offset: [s],
+            memo,
+          }) => {
+            if (first) {
+              const { width, height, x, y } = img.getBoundingClientRect();
+              const tx = ox - (x + width / 2);
+              const ty = oy - (y + height / 2);
+              memo = [transform().x, transform().y, tx, ty];
+            }
+            const x = memo[0] - (ms - 1) * memo[2];
+            const y = memo[1] - (ms - 1) * memo[3];
+            setTransform({ s, x, y });
+            return memo;
           },
         },
-        pinch: { scaleBounds: { min: 0.5, max: 8 }, rubberband: true },
-      }
-    );
+        {
+          drag: {
+            from: () => [transform().x, transform().y],
+            bounds: () => ({
+              left: (-img.width / 2) * transform().s,
+              right: (img.width / 2) * transform().s,
+              top: (-img.height / 2) * transform().s,
+              bottom: (img.height / 2) * transform().s,
+            }),
+          },
+          pinch: { scaleBounds: { min: 0.5, max: 8 }, rubberband: true },
+        }
+      );
+    }
+    img.onload = initGesture;
     onCleanup(() => {
-      gesture.destroy();
+      gesture?.destroy();
     });
   });
   return (
