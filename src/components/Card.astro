@@ -1,5 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
+import { ImageCropper } from "./ImageCropper";
 
 export interface Props {
   title?: string;
@@ -20,11 +21,12 @@ export interface Props {
   />
   <div class="bg-gray-50 rounded-lg p-4">
     <h1 class="mb-4 font-extrabold text-3xl">
-      Welcome to <a
+      <a
         class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-        href="https://www.instagram.com/accclub.chula/">accclub chula</a
+        href="https://www.instagram.com/accclub.chula/">@accclub.chula</a
       >
     </h1>
     <h3 class="font-bold text-gray-700">Hello world!</h3>
   </div>
+  <ImageCropper client:load />
 </div>
