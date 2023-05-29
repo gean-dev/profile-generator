@@ -1,4 +1,6 @@
 import { createEffect, createSignal } from "solid-js";
+import { buttonStyles } from "./Button";
+import { Select } from "./Select";
 
 export const ImageUpload = () => {
   const [file, setFile] = createSignal<File>();
@@ -18,13 +20,15 @@ export const ImageUpload = () => {
         <img
           alt="background"
           src="/profile-card/card6.png"
-          class="object-cover"
+          class="object-cover rounded-2xl shadow-xl"
         />
         <div class="absolute left-[4%] top-[22.5%] bottom-[4%] right-[62%] overflow-hidden">
           <img ref={image!} class="bg-gray-50 object-cover w-full h-[100%]" />
         </div>
       </div>
-      <label class="no-print inline-flex justify-center rounded-xl border border-transparent bg-violet-600 px-4 py-2 text-sm font-bold tracking-wide text-white hover:bg-violet-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-50 focus-visible:ring-offset-2">
+      <label
+        class={buttonStyles({ colorScheme: "primary", class: "no-print" })}
+      >
         Upload Picture
         <input
           id="file"
@@ -39,6 +43,7 @@ export const ImageUpload = () => {
           }}
         />
       </label>
+      <Select options={["SHI81", "SHI82", "SHI83", "SHI84"]} />
     </>
   );
 };

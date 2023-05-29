@@ -2,7 +2,8 @@
 import { Image } from "@astrojs/image/components";
 import { ModalButton } from "./Modal";
 import { ImageUpload } from "./ImageUpload";
-import { ToImage } from "./ToImage";
+import { SaveImage } from "./SaveImage";
+import { Select } from "./Select";
 
 export interface Props {
   title?: string;
@@ -10,7 +11,7 @@ export interface Props {
 ---
 
 <div
-  class="max-xs:flex-1 h-[800px] xs:rounded-2xl bg-transparent w-full relative overflow-hidden flex flex-col gap-4 items-center"
+  class="h-[800px] rounded-2xl bg-transparent w-full relative overflow-hidden flex flex-col gap-4 items-center"
   id="card"
 >
   <Image
@@ -85,12 +86,12 @@ export interface Props {
     format="avif"
     fit="cover"
   />
-  <div class="p-4 xs:pl-10 flex flex-col gap-4 w-80 mt-48">
-    <h1 class="font-extrabold text-2xl">
+  <div class="p-4 pl-10 flex flex-col gap-4 w-80 mt-48">
+    <h1 class="font-bold text-lg text-center pr-4">
       <a
         target="_blank"
         rel="noopener"
-        class="text-violet-500"
+        class="text-gray-500"
         href="https://www.instagram.com/accclub.chula/">@accclub.chula</a
       >
     </h1>
@@ -100,6 +101,6 @@ export interface Props {
     <ImageUpload client:load />
   </div>
   <div class="absolute bottom-6 right-6 no-print">
-    <ToImage client:load />
+    <SaveImage client:idle />
   </div>
 </div>

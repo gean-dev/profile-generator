@@ -1,6 +1,7 @@
 import * as htmlToImage from "html-to-image";
+import { Button } from "./Button";
 
-export const ToImage = () => {
+export const SaveImage = () => {
   const onClick = () => {
     const node = document.getElementById("card");
     htmlToImage
@@ -14,13 +15,5 @@ export const ToImage = () => {
         link.click();
       });
   };
-  return (
-    <button
-      type="button"
-      class="inline-flex justify-center rounded-xl border border-transparent bg-violet-100 px-4 py-2 text-sm font-bold tracking-wide text-violet-900 hover:bg-violet-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
-      onClick={onClick}
-    >
-      Save Image
-    </button>
-  );
+  return <Button onClick={onClick}>Save Image</Button>;
 };
