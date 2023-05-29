@@ -1,9 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
-import { ModalButton } from "./Modal";
 import { ImageUpload } from "./ImageUpload";
-import { SaveImage } from "./SaveImage";
-import { Select } from "./Select";
 
 export interface Props {
   title?: string;
@@ -99,8 +96,5 @@ export interface Props {
       <ModalButton client:load />
     </div> -->
     <ImageUpload client:load />
-  </div>
-  <div class="absolute bottom-6 right-6 no-print">
-    <SaveImage client:idle />
   </div>
 </div>

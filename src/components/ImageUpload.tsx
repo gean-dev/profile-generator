@@ -2,6 +2,7 @@ import { createEffect, createSignal, createMemo } from "solid-js";
 import { buttonStyles } from "./Button";
 import { Select } from "./Select";
 import { Button } from "./Button";
+import { SaveImage } from "./SaveImage";
 
 export const ImageUpload = () => {
   const [file, setFile] = createSignal<File>();
@@ -23,6 +24,7 @@ export const ImageUpload = () => {
   const cardPath = createMemo(
     () => `/profile-card/card${CARDS.indexOf(card())}.png`
   );
+  const show = createMemo(() => !!file());
   return (
     <>
       <div class="relative">
@@ -79,6 +81,9 @@ export const ImageUpload = () => {
             {year()}
           </Select>
         </div>
+      </div>
+      <div class="flex justify-center mt-8 pr-4 no-print">
+        <SaveImage show={show()} />
       </div>
     </>
   );
