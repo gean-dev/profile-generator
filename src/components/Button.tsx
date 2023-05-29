@@ -3,7 +3,7 @@ import { Component, ComponentProps, ParentProps, children } from "solid-js";
 import { VariantProps, tv } from "tailwind-variants";
 
 export const buttonStyles = tv({
-  base: "inline-flex justify-center rounded-xl border border-transparent px-4 py-2 text-sm font-bold tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+  base: "no-print inline-flex justify-center rounded-xl border border-transparent px-4 py-2 text-sm font-bold tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   variants: {
     colorScheme: {
       primary:

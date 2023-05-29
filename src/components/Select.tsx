@@ -1,4 +1,4 @@
-import { Component, For, JSX } from "solid-js";
+import { Component, For, JSX, ParentProps, children } from "solid-js";
 import {
   Menu,
   MenuItem,
@@ -12,17 +12,22 @@ import { buttonStyles } from "./Button";
 
 interface SelectProps {
   options: string[];
+  onChange: (value: any) => void;
 }
 
-export const Select: Component<SelectProps> = (props) => {
+export const Select: Component<ParentProps<SelectProps>> = (props) => {
+  const c = children(() => props.children);
   return (
-    <Popover defaultOpen={false} class="relative">
+    <Popover defaultOpen={false} class="relative flex-1">
       {({ isOpen }) => (
         <>
           <PopoverButton
-            class={clsx(isOpen() && "text-opacity-90", buttonStyles())}
+            class={clsx(
+              isOpen() && "text-opacity-90",
+              buttonStyles({ class: "w-full no-print" })
+            )}
           >
-            <span>Year</span>
+            <span>{c()}</span>
             <ChevronDownIcon
               class={clsx(
                 isOpen() && "text-opacity-70",
@@ -44,12 +49,13 @@ export const Select: Component<SelectProps> = (props) => {
               unmount={false}
               class="absolute z-10 px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl"
             >
-              <Menu class="overflow-hidden w-64 rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white flex flex-col gap-2 p-2">
+              <Menu class="overflow-hidden w-32 rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white flex flex-col gap-2 p-2">
                 <For each={props.options}>
                   {(option) => (
                     <MenuItem
                       as="button"
                       class="text-sm p-2 text-left rounded-lg hover:bg-violet-600 hover:text-white focus:outline-none focus:bg-violet-600 focus:text-white"
+                      onClick={() => props.onChange(option)}
                     >
                       {option}
                     </MenuItem>

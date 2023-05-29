@@ -1,9 +1,11 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, createMemo } from "solid-js";
 import { buttonStyles } from "./Button";
 import { Select } from "./Select";
+import { Button } from "./Button";
 
 export const ImageUpload = () => {
   const [file, setFile] = createSignal<File>();
+  let fileInput: HTMLInputELement;
   let image: HTMLImageElement;
   createEffect(() => {
     const f = file();
@@ -14,36 +16,72 @@ export const ImageUpload = () => {
       image.src = this.result as string;
     };
   });
+  let input: HTMLInputElement;
+  const [name, setName] = createSignal("YOUR NAME...");
+  const [year, setYear] = createSignal(YEARS[0]);
+  const [card, setCard] = createSignal(CARDS[0]);
+  const cardPath = createMemo(
+    () => `/profile-card/card${CARDS.indexOf(card())}.png`
+  );
   return (
     <>
       <div class="relative">
         <img
           alt="background"
-          src="/profile-card/card6.png"
-          class="object-cover rounded-2xl shadow-xl"
+          src={cardPath()}
+          class="object-cover rounded-xl shadow-lg"
         />
-        <div class="absolute left-[4%] top-[22.5%] bottom-[4%] right-[62%] overflow-hidden">
+        <div
+          class="absolute left-[4%] top-[22.5%] bottom-[4%] right-[62%] overflow-hidden cursor-pointer"
+          onClick={() => fileInput.click()}
+        >
           <img ref={image!} class="bg-gray-50 object-cover w-full h-[100%]" />
         </div>
-      </div>
-      <label
-        class={buttonStyles({ colorScheme: "primary", class: "no-print" })}
-      >
-        Upload Picture
         <input
-          id="file"
-          type="file"
-          class="hidden"
-          accept="image/png, image/jpeg"
-          onChange={(event) => {
-            const { files } = event.target as HTMLInputElement;
-            const file = files?.[0];
-            if (!file) return;
-            setFile(file);
-          }}
+          ref={input!}
+          class="absolute left-[58%] top-[31%] text-xs text-gray-800 w-24 bg-transparent focus:outline-none focus:border-violet-400 focus:ring-violet-400 focus:ring-2 rounded-sm"
+          value={name()}
         />
-      </label>
-      <Select options={["SHI81", "SHI82", "SHI83", "SHI84"]} />
+        <span class="absolute left-[58%] top-[57%] text-xs text-red-700">
+          {year()}
+        </span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-2">
+          <label
+            class={buttonStyles({
+              colorScheme: "primary",
+              class: "no-print flex-1",
+            })}
+          >
+            Upload Picture
+            <input
+              ref={fileInput!}
+              id="file"
+              type="file"
+              class="hidden"
+              accept="image/png, image/jpeg"
+              onChange={(event) => {
+                const { files } = event.target as HTMLInputElement;
+                const file = files?.[0];
+                if (!file) return;
+                setFile(file);
+              }}
+            />
+          </label>
+          <Select options={CARDS} onChange={(value) => setCard(value)}>
+            {card()}
+          </Select>
+        </div>
+        <div class="flex gap-2">
+          <Button onClick={() => input.select()}>Change Your Name</Button>
+          <Select options={YEARS} onChange={(value) => setYear(value)}>
+            {year()}
+          </Select>
+        </div>
+      </div>
     </>
   );
 };
+const YEARS = ["SHI84", "SHI83", "SHI82", "SHI81"] as const;
+const CARDS = ["Pink", "Orange", "Dark", "Red", "Cyan", "Purple"] as const;
