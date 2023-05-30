@@ -5,8 +5,8 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://accclub-chula.github.io",
-  base: "/profile-card",
+  site: "https://gean-dev.github.io/profile-generator",
+  base: "/profile-generator",
   integrations: [
     tailwind(),
     solidJs(),
