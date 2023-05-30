@@ -39,10 +39,10 @@ export const ImageUpload = () => {
         </div>
         <input
           ref={input!}
-          class="absolute left-[58%] top-[31%] text-[11px] text-gray-800 w-24 bg-transparent focus:outline-none focus:border-violet-400 focus:ring-violet-400 focus:ring-2 rounded-sm"
+          class="absolute left-[58%] top-[31.5%] text-[11px] text-gray-800 w-30 bg-transparent focus:outline-none focus:border-violet-400 focus:ring-violet-400 focus:ring-2 rounded-sm"
           value={name()}
         />
-        <span class="absolute left-[58%] top-[57%] text-xs text-red-700">
+        <span class="absolute left-[58%] top-[58%] text-xs text-red-700">
           {year()}
         </span>
       </div>
