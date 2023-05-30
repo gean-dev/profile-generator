@@ -18,7 +18,7 @@ interface SelectProps {
 export const Select: Component<ParentProps<SelectProps>> = (props) => {
   const c = children(() => props.children);
   return (
-    <Popover defaultOpen={false} class="relative flex-1">
+    <Popover defaultOpen={false} class="relative">
       {({ isOpen }) => (
         <>
           <PopoverButton
