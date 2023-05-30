@@ -3,10 +3,11 @@ import { buttonStyles } from "./Button";
 import { Select } from "./Select";
 import { Button } from "./Button";
 import { SaveImage } from "./SaveImage";
+import { Toaster } from "solid-toast";
 
 export const ImageUpload = () => {
   const [file, setFile] = createSignal<File>();
-  let fileInput: HTMLInputELement;
+  let fileInput: HTMLInputElement;
   let image: HTMLImageElement;
   createEffect(() => {
     const f = file();
@@ -27,6 +28,7 @@ export const ImageUpload = () => {
   const show = createMemo(() => !!file());
   return (
     <>
+      <Toaster position="top-center" />
       <div class="relative">
         <img
           alt="background"
@@ -88,5 +90,5 @@ export const ImageUpload = () => {
     </>
   );
 };
-const YEARS = ["SHI84", "SHI83", "SHI82", "SHI81"] as const;
-const CARDS = ["Pink", "Orange", "Dark", "Red", "Cyan", "Purple"] as const;
+const YEARS = ["SHI84", "SHI83", "SHI82", "SHI81"];
+const CARDS = ["Pink", "Orange", "Dark", "Red", "Cyan", "Purple"];

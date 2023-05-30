@@ -37,6 +37,9 @@ dependencies:
   solid-js:
     specifier: ^1.4.3
     version: 1.7.5
+  solid-toast:
+    specifier: ^0.5.0
+    version: 0.5.0(solid-js@1.7.5)
   tailwind-variants:
     specifier: ^0.1.5
     version: 0.1.5(tailwindcss@3.3.2)
@@ -3391,6 +3394,14 @@ packages:
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
+    dev: false
+
+  /solid-toast@0.5.0(solid-js@1.7.5):
+    resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}
+    peerDependencies:
+      solid-js: ^1.5.4
+    dependencies:
+      solid-js: 1.7.5
     dev: false
 
   /solid-use@0.6.2(solid-js@1.7.5):
