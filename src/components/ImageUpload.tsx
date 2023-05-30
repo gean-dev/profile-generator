@@ -22,7 +22,9 @@ export const ImageUpload = () => {
   const [name, setName] = createSignal("YOUR PASSWORD...");
   const [year, setYear] = createSignal(YEARS[0]);
   const [card, setCard] = createSignal(CARDS[0]);
-  const cardPath = createMemo(() => `/card${CARDS.indexOf(card())}.png`);
+  const cardPath = createMemo(
+    () => `profile-generator/card${CARDS.indexOf(card())}.png`
+  );
   const show = createMemo(() => !!file());
   return (
     <>
