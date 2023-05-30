@@ -13,7 +13,7 @@ export const SaveImage: Component<SaveImageProps> = (props) => {
     const node = document.getElementById("card");
     const save = async () => {
       let dataUrl = "";
-      const minDataLength = 2000000;
+      const minDataLength = 3000000;
       let i = 0;
       const maxAttempts = 10;
       while (dataUrl.length < minDataLength && i < maxAttempts) {
@@ -21,6 +21,7 @@ export const SaveImage: Component<SaveImageProps> = (props) => {
           filter: (node: HTMLElement) => !node.classList?.contains("no-print"),
         });
         i += 1;
+        console.log(`${i + 1} attemps`, dataUrl.length);
       }
       const link = document.createElement("a");
       link.download = "profile-card.png";
@@ -29,7 +30,7 @@ export const SaveImage: Component<SaveImageProps> = (props) => {
     };
     toast.promise(save(), {
       loading: "Loading",
-      success: "Success!",
+      success: "Downloading...",
       error: (
         <>
           <b>An error occurred 😔</b>

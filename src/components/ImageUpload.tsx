@@ -28,13 +28,9 @@ export const ImageUpload = () => {
   const show = createMemo(() => !!file());
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster position="top-center" containerClassName="no-print" />
       <div class="relative">
-        <img
-          alt="background"
-          src={cardPath()}
-          class="object-cover rounded-xl shadow-lg"
-        />
+        <img alt="background" src={cardPath()} class="object-cover" />
         <div
           class="absolute left-[4%] top-[22.5%] bottom-[4%] right-[62%] overflow-hidden cursor-pointer"
           onClick={() => fileInput.click()}
