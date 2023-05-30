@@ -74,7 +74,7 @@ export const ImageUpload = () => {
           </Select>
         </div>
         <div class="flex gap-2">
-          <Button onClick={() => input.select()}>Change Your Name</Button>
+          <Button onClick={() => input.select()}>Write Your Name</Button>
           <Select options={YEARS} onChange={(value) => setYear(value)}>
             {year()}
           </Select>

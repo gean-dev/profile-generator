@@ -13,7 +13,7 @@ export const SaveImage: Component<SaveImageProps> = (props) => {
     const node = document.getElementById("card");
     const save = async () => {
       let dataUrl = "";
-      const minDataLength = 3000000;
+      const minDataLength = 2000000;
       let i = 0;
       const maxAttempts = 10;
       while (dataUrl.length < minDataLength && i < maxAttempts) {
@@ -32,10 +32,10 @@ export const SaveImage: Component<SaveImageProps> = (props) => {
       loading: "Loading",
       success: "Downloading...",
       error: (
-        <>
+        <div class="flex flex-col items-center">
           <b>An error occurred 😔</b>
           <p>Please try another browser</p>
-        </>
+        </div>
       ),
     });
   };
